@@ -10,6 +10,7 @@ def main():
         return square
 
     table = [empty_square() for x in range(9)]
+
     def table_print():
         
         for row in range(3):
@@ -33,9 +34,7 @@ def main():
                     print(table[square][row])
                 else:
                     print(table[square][row], end = "")
-
-
-
+    
 
     def valid_check(square, row, num):
         if square in range(3):
@@ -153,6 +152,7 @@ def main():
                                 number = choice(numbers)
                         test1 += 3
                 counter += 1
+
         else:
             counter = 0
             while counter != 50:
@@ -209,14 +209,42 @@ def main():
 
     sudoku()
 
-    """
-    for x in range(9):
-        for y in range(3):
-            if 0 in table[x][y]:
-                sudoku()
+    final = 0
+    while final != 110:
+        for z in range(9):
+            for h in range(3):
+                while 0 in table[z][h]:
+                    table = [empty_square() for x in range(9)]
+                    sudoku()
+        final += 1
+
+    def randomfy():
+        num = 0
+        row = 0
+        square = 0
+        for x in range(81):
+            numbers = [0, 1, 2]
+            if num == 3:
+                num = 0
+                row += 1
+            if row == 3:
+                row = 0
+                square += 1
+
+            randomnumber = choice(numbers)
+
+            if randomnumber == 0:
+                table[square][row][num] = 0
             else:
                 pass
-    """
+            if x != 80:
+                num += 1
+            else:
+                pass
+
+    table_print()
+    print("\n")
+    randomfy()
     table_print()
 if __name__ == "__main__":
     main()
